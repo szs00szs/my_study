@@ -1,4 +1,4 @@
-package com.hansam.jee;
+package cc.hansam.jee;
 
 import java.io.IOException;
 import java.io.PrintWriter;

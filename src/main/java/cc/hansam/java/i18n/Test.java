@@ -1,4 +1,4 @@
-package com.hansam.java.i18n;
+package cc.hansam.java.i18n;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

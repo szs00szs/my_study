@@ -1,4 +1,4 @@
-package com.hansam.java.io;
+package cc.hansam.java.io;
 
 import java.io.File;
 
