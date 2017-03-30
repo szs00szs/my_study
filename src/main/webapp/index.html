@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-3.1.0.js" type="text/javascript"></script>
+<script type="text/javascript">
+function test() {
+$.ajax({
+	url:"http://localhost:8080/my_study/test",
+	type:'post',
+	dataType:'json',
+	async : true, //默认为true 异步     
+	data:{
+		name:'shishuaishuai',
+		age:'21',
+		sex:'male',
+	},
+	success:function(data){
+		for(var i in data){
+		    alert(data[i]);
+		}
+		
+		$('#msg').html(data);
+	}
+	
+});
+}
+</script>
+</head>
+<body>
+	<div id="msg" style="border-style: solid;"></div>
+	<input type="button" value="测试" onclick="test();">
+</body>
+</html>
