@@ -21,27 +21,30 @@ public class HansamServer {
 
 		ServerSocket s = new ServerSocket(PORT);
 		System.out.println("started: " + s);
+		try {
+			Socket socket = s.accept();
+			System.out.println("connection  accepted: " + socket);
 
-		Socket socket = s.accept();
-		System.out.println("connection  accepted: " + socket);
+			try {
+				BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-		BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())),
+						true);
 
-		PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
-
-		while (true) {
-			String str = in.readLine();
-			if (str.equals("end")) {
-				break;
+				while (true) {
+					String str = in.readLine();
+					if (str.equals("end")) {
+						break;
+					}
+					System.out.println("request: " + str);
+					out.println(str);
+				}
+			} finally {
+				System.out.println("closing...");
+				socket.close();
 			}
-			System.out.println("request: " + str);
-			out.println(str);
+		} finally {
+			s.close();
 		}
-
-		System.out.println("closing...");
-		out.close();
-		in.close();
-		socket.close();
-		s.close();
 	}
 }

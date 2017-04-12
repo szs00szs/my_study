@@ -21,22 +21,22 @@ public class HansamClient {
 
 		Socket socket = new Socket(address, HansamServer.PORT);
 		System.out.println("socket: " + socket);
+		try {
+			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-		BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())),
+					true);
 
-		PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
-
-		for (int i = 0; i < 10; i++) {
-			out.println("hi " + i);
-			String str = in.readLine();
-			System.out.println(str);
+			for (int i = 0; i < 10; i++) {
+				out.println("hi " + i);
+				String str = in.readLine();
+				System.out.println(str);
+			}
+			out.println("end");
+		} finally {
+			System.out.println("closing...");
+			socket.close();
 		}
-		out.println("end");
-		
-		System.out.println("closing...");
-		out.close();
-		in.close();
-		socket.close();
 	}
 
 }
