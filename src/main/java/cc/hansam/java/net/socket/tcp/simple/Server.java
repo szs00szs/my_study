@@ -1,4 +1,4 @@
-package cc.hansam.java.net.simple;
+package cc.hansam.java.net.socket.tcp.simple;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

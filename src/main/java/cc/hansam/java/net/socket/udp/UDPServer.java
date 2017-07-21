@@ -1,4 +1,4 @@
-package cc.hansam.java.net.udp;
+package cc.hansam.java.net.socket.udp;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

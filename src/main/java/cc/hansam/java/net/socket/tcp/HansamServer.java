@@ -1,4 +1,4 @@
-package cc.hansam.java.net;
+package cc.hansam.java.net.socket.tcp;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
