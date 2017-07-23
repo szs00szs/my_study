@@ -7,7 +7,7 @@ import javax.jws.WebService;
  * @date 2017年6月21日下午7:00:30
  */
 
-@WebService(endpointInterface="cc.hansam.ws.ser.MyService")
+@WebService(endpointInterface="cc.hansam.java.net.ws.server.MyService")
 public class MyServiceImpl implements MyService {
 
 	public String say(String name) {

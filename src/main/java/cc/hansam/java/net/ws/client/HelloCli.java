@@ -16,7 +16,7 @@ public class HelloCli {
 	
 	public static void main(String[] args) throws MalformedURLException {
 		URL url = new URL("http://localhost:8080/hello?wsdl");
-		QName qName = new QName("http://ser.ws.hansam.cc/", "MyServiceImplService");
+		QName qName = new QName("http://server.ws.net.java.hansam.cc/", "MyServiceImplService");
 		Service service = Service.create(url,qName);
 		
 		MyService myService = service.getPort(MyService.class);
