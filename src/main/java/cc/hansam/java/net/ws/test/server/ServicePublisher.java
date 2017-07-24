@@ -1,4 +1,4 @@
-package cc.hansam.java.net.ws.server;
+package cc.hansam.java.net.ws.test.server;
 
 import javax.xml.ws.Endpoint;
 

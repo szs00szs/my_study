@@ -1,4 +1,4 @@
-package cc.hansam.java.net.ws.client;
+package cc.hansam.java.net.ws.test.client;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -6,7 +6,7 @@ import java.net.URL;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
-import cc.hansam.java.net.ws.server.MyService;
+import cc.hansam.java.net.ws.test.server.MyService;
 
 /** 
  * @author hansam 945210972@qq.com
