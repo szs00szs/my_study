@@ -1,4 +1,4 @@
-package cc.hansam.java.net.rest;
+package cc.hansam.java.net.http;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import com.alibaba.fastjson.JSONObject;
  * @author hansam 945210972@qq.com
  * @date 2017年7月24日上午11:44:16
  */
-public class RestTest {
+public class HttpGetTest {
 
 	public static void main(String[] args) throws ClientProtocolException, IOException {
 		HttpClient httpclient = new DefaultHttpClient();
