@@ -11,24 +11,20 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 /**
+ * ContentType("application/json")
  * @author hansam 945210972@qq.com
  * @date 2017年7月13日下午6:41:35
  */
 @SuppressWarnings("deprecation")
-public class HttpPostTest {
+public class HttpPostJSONRequest {
 	public static void main(String[] args) throws ClientProtocolException, IOException {
-//		String url = "http://10.80.184.203:8886/PMServerHttpDataInterface/";
-		String url = "http://www.hansam.cc";
+		String url = "http://localhost:8080/springweb/restcontroller/v5.0/new/odb";
 		HttpPost httpPost = new HttpPost(url);
 
-		// List<NameValuePair> parms = new ArrayList<>();
-		//
-		// parms.add(new BasicNameValuePair("Type", "1"));
-		// parms.add(new BasicNameValuePair("UserName", "admin"));
-		// parms.add(new BasicNameValuePair("Password", "admin"));
+		StringEntity entity = new StringEntity("{\"age\":22,\"id\":1,\"name\":\"时帅帅\"}",HTTP.UTF_8);
+		 
 
-		StringEntity entity = new StringEntity("{\"Type\":1,\"UserName\":\"admin\",\"Password\":\"admin\"}",HTTP.UTF_8);
-
+		entity.setContentType("application/json;charset=utf-8");
 		httpPost.setEntity(entity);
 
 		@SuppressWarnings("resource")
@@ -36,6 +32,7 @@ public class HttpPostTest {
 		
 		
 
+		System.out.println(response.getStatusLine());
 		if (response.getStatusLine().getStatusCode() == 200) {
 
 			String result = EntityUtils.toString(response.getEntity());
