@@ -9,7 +9,7 @@ import java.text.DecimalFormat;
  * @date 2017年8月5日上午10:56:13
  */
 public class UinnovaSalaryCal {
-	private static final double TOTLEMONEY = 6000; // 税前总工资
+	private static final double TOTLEMONEY = 7000; // 税前总工资
 
 	// 汇缴基数
 	private static final double SOCIALSECURITYBASE_A = 3082; // 社保汇缴基数[养老、失业（农村户口没有）]
