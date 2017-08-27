@@ -6,6 +6,10 @@ package cc.hansam.test;
  */
 public class App {
 	public static void main(String[] args) {
-		
+
+		String a = "a";
+		String b = "b";
+		a.compareTo(b);
+
 	}
 }

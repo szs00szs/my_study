@@ -1,5 +1,6 @@
 package cc.hansam.tools;
 
+import java.text.DecimalFormat;
 /**
  * 工资发放计算器
  * 
@@ -7,7 +8,7 @@ package cc.hansam.tools;
  * @date 2017年8月5日上午10:56:13
  */
 public class UinnovaSalaryCal {
-	private static final double TOTLEMONEY = 6000; // 税前总工资
+	private static final double TOTLEMONEY = 7000; // 税前总工资
 
 	// 汇缴基数
 	private static final double SOCIALSECURITYBASE_A = 3082; // 社保汇缴基数[养老、失业（农村户口没有）]
@@ -102,6 +103,16 @@ public class UinnovaSalaryCal {
 		return HOUSINGFUNDBASE * HOUSINGFUND_COMPANY;
 
 	}
+	
+	
+	/**
+	 * 金额格式化
+	 */
+	public static String getFormat(double money) {
+		DecimalFormat format = new DecimalFormat("#.##"); // 金额格式化
+		return format.format(money);
+	}
+	
 
 	public static void main(String[] args) {
 		double pensionInsuranceByPerson = getPensionInsuranceByPerson();
@@ -124,26 +135,26 @@ public class UinnovaSalaryCal {
 		double housingFundByCompany = getHousingFundByCompany();
 		double totoalByCompany = pensionInsuranceByCompany + medicalInsuranceByCompany + unemploymentInsuranceByCompany
 				+ occupationalInjuryInsuranceByCompany + bearInsuranceByCompany + housingFundByCompany;
-
+		
 		System.out.println("================个人汇缴记录================");
-		System.out.println("养老：" + pensionInsuranceByPerson);
-		System.out.println("医疗：" + medicalInsuranceByPerson);
-		// System.out.println("失业：" + unemploymentInsuranceByPerson);
-		System.out.println("公积金：" + housingFundByPerson);
-		System.out.println("  	--扣缴总计：" + allDebit);
-		System.out.println("	--工资总额：" + money);
-		System.out.println("个人所得税：" + taxByPerson);
-		System.out.println("最后所得：" + resultMoney);
+		System.out.println("养老：" + getFormat(pensionInsuranceByPerson));
+		System.out.println("医疗：" + getFormat(medicalInsuranceByPerson));
+		// System.out.println("失业：" + getFormat(unemploymentInsuranceByPerson));
+		System.out.println("公积金：" + getFormat(housingFundByPerson));
+		System.out.println("  	--扣缴总计：" + getFormat(allDebit));
+		System.out.println("	--工资总额：" + getFormat(money));
+		System.out.println("个人所得税：" + getFormat(taxByPerson));
+		System.out.println("最后所得：" + getFormat(resultMoney));
 		System.out.println();
 
 		System.out.println("================单位汇缴记录================");
-		System.out.println("养老：" + pensionInsuranceByCompany);
-		System.out.println("医疗：" + medicalInsuranceByCompany);
-		// System.out.println("失业：" + unemploymentInsuranceByCompany);
-		System.out.println("工伤：" + occupationalInjuryInsuranceByCompany);
-		System.out.println("生育：" + bearInsuranceByCompany);
-		System.out.println("公积金：" + housingFundByCompany);
-		System.out.println("	--总计：" + totoalByCompany);
+		System.out.println("养老：" + getFormat(pensionInsuranceByCompany));
+		System.out.println("医疗：" + getFormat(medicalInsuranceByCompany));
+		// System.out.println("失业：" + getFormat(unemploymentInsuranceByCompany));
+		System.out.println("工伤：" + getFormat(occupationalInjuryInsuranceByCompany));
+		System.out.println("生育：" + getFormat(bearInsuranceByCompany));
+		System.out.println("公积金：" + getFormat(housingFundByCompany));
+		System.out.println("	--总计：" + getFormat(totoalByCompany));
 
 	}
 
