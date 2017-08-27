@@ -1,7 +1,5 @@
 package cc.hansam.tools;
 
-import java.time.Period;
-
 /**
  * 工资发放计算器
  * 
