@@ -28,7 +28,7 @@ public class Hex2Float {
 	 * @return
 	 * @throws DecoderException
 	 */
-	private Float hexStr2Float(String hexStr) throws DecoderException {
+	public static Float hexStr2Float(String hexStr) throws DecoderException {
 		Float result = null;
 		// 先通过apahce的 hex类转换十六进制字符串为byte数组. 也可以自己用JDK原声的方法来循环转
 		// Character.digit(ch, 16);
