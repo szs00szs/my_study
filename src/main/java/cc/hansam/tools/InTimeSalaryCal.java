@@ -10,12 +10,12 @@ import java.util.Scanner;
  * @date 2017年8月5日上午10:56:13
  */
 public class InTimeSalaryCal {
-    private static double TOTLEMONEY = 0; // 税前总工资
+    private static final double TOTAL_MONEY = 0; // 税前总工资
 
     // 汇缴基数
     private static final double SOCIALSECURITYBASE_A = 4500; // 社保汇缴基数[养老、失业（农村户口没有）]
     private static final double SOCIALSECURITYBASE_B = 4624; // 社保汇缴基数[工伤、生育、医疗2%+3]
-    private static final double HOUSINGFUNDBASE = TOTLEMONEY; // 公积金汇缴基数
+    private static final double HOUSINGFUNDBASE = TOTAL_MONEY; // 公积金汇缴基数
 
     // 个人应缴比例
     private static final double PENSIONINSURANCE_PERSON = 0.08; // 养老
@@ -123,8 +123,6 @@ public class InTimeSalaryCal {
 
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        TOTLEMONEY = scanner.nextDouble();
         double pensionInsuranceByPerson = getPensionInsuranceByPerson();
         double medicalInsuranceByPerson = getMedicalInsuranceByPerson();
         double unemploymentInsuranceByPerson = getUnemploymentInsuranceByPerson();
@@ -134,7 +132,7 @@ public class InTimeSalaryCal {
                 + housingFundByPerson;
 
         // 代缴后金额
-        double money = TOTLEMONEY - allDebit;
+        double money = TOTAL_MONEY - allDebit;
         double taxByPerson = getTaxByPerson(money + TOTAL_SUBSIDY);
         double resultMoney = money - taxByPerson + TOTAL_SUBSIDY;
 
