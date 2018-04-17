@@ -1,6 +1,7 @@
 package cc.hansam.tools;
 
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 /**
  * 工资发放计算器
@@ -9,7 +10,7 @@ import java.text.DecimalFormat;
  * @date 2017年8月5日上午10:56:13
  */
 public class InTimeSalaryCal {
-    private static final double TOTLEMONEY = 8000; // 税前总工资
+    private static double TOTLEMONEY = 0; // 税前总工资
 
     // 汇缴基数
     private static final double SOCIALSECURITYBASE_A = 4500; // 社保汇缴基数[养老、失业（农村户口没有）]
@@ -38,6 +39,7 @@ public class InTimeSalaryCal {
     private static final double FOOD_SUBSIDY = 420; // 饭补
     private static final double COMMUNICATION_SUBSIDY = 200; // 通信补助
     private static final double TRAFFIC_SUBSIDY = 105; // 交通补助
+    private static final double TOTAL_SUBSIDY = FOOD_SUBSIDY + COMMUNICATION_SUBSIDY + TRAFFIC_SUBSIDY;
 
 
     // ====================================个人
@@ -121,6 +123,8 @@ public class InTimeSalaryCal {
 
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        TOTLEMONEY = scanner.nextDouble();
         double pensionInsuranceByPerson = getPensionInsuranceByPerson();
         double medicalInsuranceByPerson = getMedicalInsuranceByPerson();
         double unemploymentInsuranceByPerson = getUnemploymentInsuranceByPerson();
@@ -129,9 +133,10 @@ public class InTimeSalaryCal {
         double allDebit = pensionInsuranceByPerson + medicalInsuranceByPerson + unemploymentInsuranceByPerson
                 + housingFundByPerson;
 
+        // 代缴后金额
         double money = TOTLEMONEY - allDebit;
-        double taxByPerson = getTaxByPerson(money);
-        double resultMoney = money - taxByPerson;
+        double taxByPerson = getTaxByPerson(money + TOTAL_SUBSIDY);
+        double resultMoney = money - taxByPerson + TOTAL_SUBSIDY;
 
         double pensionInsuranceByCompany = getPensionInsuranceByCompany();
         double medicalInsuranceByCompany = getMedicalInsuranceByCompany();
@@ -148,10 +153,10 @@ public class InTimeSalaryCal {
         // System.out.println("失业：" + getFormat(unemploymentInsuranceByPerson));
         System.out.println("公积金：" + getFormat(housingFundByPerson));
         System.out.println("  	--扣缴总计：" + getFormat(allDebit));
-        System.out.println("	--工资总额：" + getFormat(money));
+        System.out.println("	--工资净额：" + getFormat(money));
+        System.out.println("	--补助总额：" + getFormat(TOTAL_SUBSIDY));
         System.out.println("个人所得税：" + getFormat(taxByPerson));
-        System.out.println("薪资净额：" + getFormat(resultMoney));
-        System.out.println("最后所得：" + getFormat(resultMoney + FOOD_SUBSIDY + COMMUNICATION_SUBSIDY + TRAFFIC_SUBSIDY));
+        System.out.println("最后所得：" + getFormat(resultMoney));
         System.out.println();
 
         System.out.println("================单位汇缴记录================");
