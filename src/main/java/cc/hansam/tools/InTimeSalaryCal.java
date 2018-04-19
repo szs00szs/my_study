@@ -1,7 +1,6 @@
 package cc.hansam.tools;
 
 import java.text.DecimalFormat;
-import java.util.Scanner;
 
 /**
  * 工资发放计算器
